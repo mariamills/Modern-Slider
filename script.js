@@ -9,10 +9,12 @@ let i = 1;
 const delay = 12000;
 
 function activeCheck(list) {
-  for (let element of list) {
-    if (element.classList.contains("active")) {
-      element.classList.remove("active");
+  for (let i = 0; i < list.length; i++) {
+    const classList = list[i].classList;
+    if (!classList.contains("active")) {
+      continue;
     }
+    classList.remove("active");
   }
 }
 
