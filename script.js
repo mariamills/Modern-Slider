@@ -2,6 +2,7 @@ const paginationBtns = document.querySelectorAll(".slider__pagination");
 const slideItems = document.querySelectorAll(".slider__item");
 let slide = document.querySelector(".slider");
 
+const slideLength = slideItems.length;
 // Currently using this variable for my timedSlide function to iterate through the different slides
 let i = 1;
 //Change this value to change the automated delay, currently set to 12 seconds
@@ -16,18 +17,12 @@ function activeCheck(list) {
 }
 
 function timeSlide() {
-  setTimeout(function () {
+  setInterval(function () {
     activeCheck(slideItems);
     slideItems[i].classList.add("active");
     activeCheck(paginationBtns);
     paginationBtns[i].classList.add("active");
-    i++;
-    if (i == slideItems.length) {
-      i = 0;
-    }
-    if (i < slideItems.length) {
-      timeSlide();
-    }
+    i = (i + 1) % slideLength;
   }, delay);
 }
 
